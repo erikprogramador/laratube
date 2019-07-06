@@ -1,4 +1,4 @@
-<header class="w-full shadow flex items-center">
+<header class="w-full shadow flex items-center bg-default fixed pin-t pin-x">
     <div class="w-64 py-3 px-6 flex items-center">
         <button class="text-text text-2xl mr-4"><i class="mdi mdi-menu"></i></button>
 
@@ -8,7 +8,7 @@
     </div>
 
     <form action="#" class="flex-1">
-        <div class="flex items-center w-8/12 ml-16">
+        <div class="flex items-center w-7/12 ml-16">
             <input type="text" name="search" id="search" placeholder="Pesquisar" class="border border-side-focus px-2 h-8 rounded-l-sm w-full outline-none focus:border-link">
 
             <button class="bg-btn-search px-6 h-8 text-lg rounded-r-sm opacity-50 border border-side-focus"><i class="mdi mdi-magnify"></i></button>
