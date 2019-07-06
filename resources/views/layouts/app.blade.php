@@ -24,9 +24,7 @@
         @include('partials.nav')
 
         <main class="flex align-items-center h-full">
-            <div class="bg-side w-64 pt-16 h-screen overflow-y-auto">
-                hello
-            </div>
+            @include('partials.sidenav')
 
             <div class="flex-1 pt-20 px-4 h-screen overflow-y-auto">
                 @yield('content')

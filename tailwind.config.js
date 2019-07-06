@@ -12,8 +12,11 @@ module.exports = {
             bg: '#FAFAFA',
             side: '#F5F5F5',
             'side-focus': '#DCDCDC',
+            'side-heading': '#8E6460',
 
-            'btn-search': '#F8F8F8'
+            'btn-search': '#F8F8F8',
+
+            icon: '#909090'
         },
 
         extend: {
