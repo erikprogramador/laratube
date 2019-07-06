@@ -1,73 +1,38 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+    <form action="{{ route('login') }}" method="POST" class="mx-auto my-24 py-8 px-12 w-2/6 border border-side-focus rounded-lg text-center">
+        @csrf
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
+        <img src="{{ asset('images/logo.png') }}" alt="Logo Laratube" class="w-24 mx-auto mb-6">
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+        <h1 class="text-text text-lg mb-2">Login</h1>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+        <p class="text-text text-sm mb-6">Prosseguir com login no Laratube</p>
 
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+        <div class="w-full relative mb-5 text-left">
+            <label class="absolute pin-l pin-t {{ $errors->has('email') ? 'text-main' : 'text-link' }} -mt-3 ml-3 bg-default px-1" for="email">E-mail</label>
+            <input type="email" name="email" id="email" placeholder="E-mail" class="outline-none w-full py-3 px-2 border-2 {{ $errors->has('email') ? 'border-main focus:border-main' : 'border-side-focus focus:border-link' }} rounded" autofocus>
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+            @error('email')
+                <span class="text-xs text-main font-semibold tracking-widest"><i class="mdi mdi-alert-circle mr-1"></i>{{ $message }}</span>
+            @enderror
         </div>
-    </div>
-</div>
+
+        <div class="w-full relative mb-3">
+            <label class="absolute pin-l pin-t text-link -mt-3 ml-3 bg-default px-1" for="password">Senha</label>
+            <input type="password" name="password" id="password" placeholder="Senha" class="outline-none w-full py-3 px-2 border-2 border-side-focus focus:border-link rounded">
+        </div>
+
+        <div class="text-left">
+            <a class="text-link font-semibold text-sm" href="#">Esqueceu sua senha?</a>
+        </div>
+
+        <div class="flex items-center justify-between mt-8">
+            <a class="text-link text-sm font-hairline" href="{{ route('register') }}">Criar conta</a>
+
+            <button class="text-default bg-link font-semibold tracking-wide text-sm px-6 py-2 rounded">Logar</button>
+        </div>
+    </form>
 @endsection

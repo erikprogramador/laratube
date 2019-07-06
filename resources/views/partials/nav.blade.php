@@ -3,7 +3,7 @@
         <button class="text-text text-2xl mr-4"><i class="mdi mdi-menu"></i></button>
 
         <a href="{{ route('welcome') }}">
-            <img src="{{ asset('images/logo.png') }}" alt="Logo Youtube" class="w-20">
+            <img src="{{ asset('images/logo.png') }}" alt="Logo Laratube" class="w-20">
         </a>
     </div>
 
