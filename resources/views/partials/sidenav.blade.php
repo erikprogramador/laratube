@@ -3,7 +3,7 @@
         <ul class="py-2 border-b border-side-focus">
             @foreach ($items as $item)
                 <li>
-                    <a class="flex items-center w-full px-6 py-1 text-sm text-text hover:bg-side-focus" href="{{ route($item['route']) }}">
+                    <a class="flex items-center w-full px-6 py-1 text-sm text-text {{ $loop->last ? 'font-semibold' : '' }} hover:bg-side-focus" href="{{ route($item['route']) }}">
                         <i class="mdi mdi-{{ $item['icon'] }} text-2xl mr-6 {{ $loop->last ? 'text-main' : 'text-icon' }}"></i>
                         <span>{{ $item['text'] }}</span>
                     </a>

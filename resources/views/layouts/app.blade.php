@@ -19,18 +19,15 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body class="font-sans bg-bg">
+<body class="subpixel-antialiased font-sans bg-bg">
     <div id="app">
         @include('partials.nav')
 
         <main class="flex align-items-center h-full">
             @include('partials.sidenav')
 
-            <div class="flex-1 pt-20 px-4 h-screen overflow-y-auto">
+            <div class="flex-1 pt-20 px-6 h-screen overflow-y-auto">
                 @yield('content')
-                @for ($i = 0; $i <=1000;$i++)
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deserunt incidunt sunt id minus eveniet neque, necessitatibus amet, exercitationem aspernatur, omnis voluptates earum praesentium. Error quaerat aspernatur animi, ipsa quibusdam blanditiis?</p>
-                @endfor
             </div>
         </main>
     </div>
