@@ -1,7 +1,9 @@
 import './bootstrap'
 import Vue from 'vue'
+import VModal from 'vue-js-modal'
 
 window.Vue = Vue
+Vue.use(VModal)
 
 const files = require.context('./', true, /\.vue$/i)
 files.keys().map(key =>

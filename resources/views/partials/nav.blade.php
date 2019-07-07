@@ -16,9 +16,11 @@
     </form>
 
     <nav class="flex items-center px-8">
-        <a class="text-text ml-6 text-2xl" href="#"><i class="mdi mdi-video-plus"></i></a>
-        <a class="text-text ml-6 text-2xl" href="#"><i class="mdi mdi-bell"></i></a>
         @auth
+            <add-video></add-video>
+
+            <a class="text-text ml-6 text-2xl" href="#"><i class="mdi mdi-bell"></i></a>
+
             <a class="inline-block rounded-full overflow-hidden w-10 h-10 ml-6" href="#"
             onClick="event.preventDefault();
                         document.getElementById('logout-form').submit();">
