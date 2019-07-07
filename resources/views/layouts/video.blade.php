@@ -21,10 +21,16 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body class="subpixel-antialiased font-sans bg-default">
+<body class="subpixel-antialiased font-sans bg-bg">
     <div id="app">
-        <main>
-            @yield('content')
+        @include('partials.nav')
+
+        <main class="flex align-items-center h-full">
+            @include('partials.sidenav', ['hidden' => true])
+
+            <div class="flex-1 pt-20 px-6 h-screen overflow-y-auto">
+                @yield('content')
+            </div>
         </main>
     </div>
 </body>
