@@ -8,9 +8,9 @@
             <img src="{{ asset('images/logo.png') }}" alt="Logo Laratube" class="w-24 mx-auto mb-6">
         </a>
 
-        <h1 class="text-text text-lg mb-2">Login</h1>
+        <h1 class="text-text text-lg mb-2">Cadastre-se</h1>
 
-        <p class="text-text text-sm mb-6">Prosseguir com login no Laratube</p>
+        <p class="text-text text-sm mb-6">Prosseguir com cadastro no Laratube</p>
 
         <div class="w-full relative mb-8 text-left">
             <label class="absolute pin-l pin-t {{ $errors->has('name') ? 'text-main' : 'text-link' }} -mt-3 ml-3 bg-default px-1" for="name">Nome</label>

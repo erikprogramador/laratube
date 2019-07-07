@@ -30,7 +30,7 @@
         <input type="hidden" name="remember" id="remember" value="true">
 
         <div class="text-left">
-            <a class="text-link font-semibold text-sm" href="#">Esqueceu sua senha?</a>
+            <a class="text-link font-semibold text-sm" href="{{ route('password.request') }}">Esqueceu sua senha?</a>
         </div>
 
         <div class="flex items-center justify-between mt-8">
