@@ -6,4 +6,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('feed/subscriptions', function () {
+    return redirect()->route('welcome');
+})->name('subscriptions')->middleware(['auth']);

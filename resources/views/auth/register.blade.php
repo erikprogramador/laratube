@@ -14,7 +14,7 @@
 
         <div class="w-full relative mb-8 text-left">
             <label class="absolute pin-l pin-t {{ $errors->has('name') ? 'text-main' : 'text-link' }} -mt-3 ml-3 bg-default px-1" for="name">Nome</label>
-            <input type="text" name="name" id="name" placeholder="Nome" class="outline-none w-full py-3 px-2 border-2 {{ $errors->has('name') ? 'border-main focus:border-main' : 'border-side-focus focus:border-link' }} rounded" autofocus>
+            <input type="text" name="name" id="name" placeholder="Nome" class="outline-none w-full py-3 px-2 border-2 {{ $errors->has('name') ? 'border-main focus:border-main' : 'border-side-focus focus:border-link' }} rounded" autofocus value="{{ old('name') }}">
 
             @error('name')
                 <span class="text-xs text-main font-semibold tracking-widest"><i class="mdi mdi-alert-circle mr-1"></i>{{ $message }}</span>
@@ -23,7 +23,7 @@
 
         <div class="w-full relative mb-8 text-left">
             <label class="absolute pin-l pin-t {{ $errors->has('email') ? 'text-main' : 'text-link' }} -mt-3 ml-3 bg-default px-1" for="email">E-mail</label>
-            <input type="email" name="email" id="email" placeholder="E-mail" class="outline-none w-full py-3 px-2 border-2 {{ $errors->has('email') ? 'border-main focus:border-main' : 'border-side-focus focus:border-link' }} rounded">
+            <input type="email" name="email" id="email" placeholder="E-mail" class="outline-none w-full py-3 px-2 border-2 {{ $errors->has('email') ? 'border-main focus:border-main' : 'border-side-focus focus:border-link' }} rounded" value="{{ old('email') }}">
 
             @error('email')
                 <span class="text-xs text-main font-semibold tracking-widest"><i class="mdi mdi-alert-circle mr-1"></i>{{ $message }}</span>

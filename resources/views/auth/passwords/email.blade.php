@@ -21,7 +21,7 @@
 
         <div class="w-full relative mb-8 text-left">
             <label class="absolute pin-l pin-t {{ $errors->has('email') ? 'text-main' : 'text-link' }} -mt-3 ml-3 bg-default px-1" for="email">E-mail</label>
-            <input type="email" name="email" id="email" placeholder="E-mail" class="outline-none w-full py-3 px-2 border-2 {{ $errors->has('email') ? 'border-main focus:border-main' : 'border-side-focus focus:border-link' }} rounded" autofocus>
+            <input type="email" name="email" id="email" placeholder="E-mail" class="outline-none w-full py-3 px-2 border-2 {{ $errors->has('email') ? 'border-main focus:border-main' : 'border-side-focus focus:border-link' }} rounded" autofocus value="{{ old('email') }}">
 
 
             @error('email')
@@ -32,7 +32,7 @@
         <div class="flex items-center justify-between mt-8">
             <a class="text-link text-sm font-hairline" href="{{ route('login') }}">Fazer login</a>
 
-            <button class="text-default bg-link font-semibold tracking-wide text-sm px-6 py-2 rounded">Recuperar</button>
+            <button class="text-default bg-link font-semibold tracking-wide text-sm px-6 py-2 rounded">Requisitar link</button>
         </div>
     </form>
 @endsection
