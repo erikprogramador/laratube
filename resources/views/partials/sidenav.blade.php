@@ -1,4 +1,4 @@
-<div class="bg-side w-64 pt-16 h-screen overflow-y-auto">
+<div class="bg-side w-64 pt-16 h-screen overflow-y-auto {{ isset($hidden) ? 'hidden' : '' }}">
     @foreach (config('laratube.menu.items') as $items)
         <ul class="py-2 border-b border-side-focus">
             @foreach ($items as $item)
