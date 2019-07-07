@@ -21,7 +21,6 @@
 </head>
 <body class="subpixel-antialiased font-sans bg-default">
     <div id="app">
-
         <main>
             @yield('content')
         </main>

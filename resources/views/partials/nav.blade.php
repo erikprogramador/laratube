@@ -19,14 +19,19 @@
         <a class="text-text ml-6 text-2xl" href="#"><i class="mdi mdi-video-plus"></i></a>
         <a class="text-text ml-6 text-2xl" href="#"><i class="mdi mdi-bell"></i></a>
         @auth
-            <a class="inline-block rounded-full overflow-hidden w-10 h-10 ml-6" href="#">
+            <a class="inline-block rounded-full overflow-hidden w-10 h-10 ml-6" href="#"
+            onClick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
                 <img class="w-full" src="https://unsplash.it/40/40" alt="Usuario"/>
             </a>
+
+            <form action="{{ route('logout') }}" method="POST" id="logout-form">@csrf</form>
         @else
             <a class="inline-flex items-center border border-link text-link pointer ml-6 px-3 py-1 uppercase font-medium rounded-sm" href="{{ route('login') }}">
                 <i class="mdi mdi-account-circle text-2xl mr-2"></i>
                 Fazer login
             </a>
+
         @endauth
     </nav>
 </header>
