@@ -28,6 +28,7 @@ Route::post('unsubscribe/{channel}', 'ChannelSubscriptionsController@destroy')->
 /**
  * Channels
  */
+Route::put('channel/{channel}', 'ChannelsController@update')->name('channels.update')->middleware(['auth']);
 
 /**
  * Videos

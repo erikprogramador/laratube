@@ -8,6 +8,10 @@ class Channel extends Model
 {
     protected $guarded = [];
 
+    protected $casts = [
+        'owner_id' => 'int',
+    ];
+
     public static function boot()
     {
         parent::boot();

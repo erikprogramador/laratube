@@ -15,9 +15,10 @@ class CreateChannelsTable extends Migration
     {
         Schema::create('channels', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('slug')->unique()->index();
             $table->string('name');
             $table->unsignedBigInteger('owner_id');
-            $table->string('slug')->unique()->index();
+            $table->text('description')->nullable();
             $table->timestamps();
 
             $table->foreign('owner_id')
