@@ -49,6 +49,7 @@ class VideoUploadTest extends TestCase
     /** @test */
     public function when_upload_video_may_create_a_thumbnail()
     {
+        $this->withoutExceptionHandling();
         $channel = factory(Channel::class)->create();
 
         Storage::fake('local');
