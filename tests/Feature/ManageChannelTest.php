@@ -92,4 +92,14 @@ class ManageChannelTest extends TestCase
             'description' => 'Updated Channel description',
         ])->assertJsonValidationErrors(['name']);
     }
+
+    /** @test */
+    public function any_user_can_see_a_channel()
+    {
+        $channel = factory(Channel::class)->create();
+
+        $this->get(route('channels.show', $channel))
+            ->assertStatus(200)
+            ->assertViewHas('channel', $channel);
+    }
 }
