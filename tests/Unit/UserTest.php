@@ -23,4 +23,15 @@ class UserTest extends TestCase
 
         $this->assertTrue($user->fresh()->channel->is($channel));
     }
+
+    /** @test */
+    public function it_can_get_its_subscriptions()
+    {
+        $user = factory(User::class)->create();
+        $channel = factory(Channel::class)->create();
+
+        $channel->subscribe($user);
+
+        $this->assertCount(1, $user->fresh()->subscriptions);
+    }
 }

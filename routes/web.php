@@ -11,3 +11,9 @@ Route::get('feed/subscriptions', function () {
 })->name('subscriptions')->middleware(['auth']);
 
 Route::view('watch/{video}', 'videos.show')->name('videos.watch');
+
+/**
+ * Subscriptions
+ */
+Route::post('subscribe/{channel}', 'ChannelSubscriptionsController@store')->name('subscribe')->middleware(['auth']);
+Route::post('unsubscribe/{channel}', 'ChannelSubscriptionsController@destroy')->name('unsubscribe')->middleware(['auth']);

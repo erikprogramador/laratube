@@ -16,4 +16,34 @@ class Channel extends Model
             $model->slug = str_random(16);
         });
     }
+
+    public function subscriptions()
+    {
+        return $this->hasMany(Subscription::class);
+    }
+
+    public function subscribe($user)
+    {
+        $this->subscriptions()->create([
+            'user_id' => $user->id,
+        ]);
+
+        return $this;
+    }
+
+    public function unsubscribe($user)
+    {
+        $this->subscriptions()
+            ->where('user_id', $user->id)
+            ->delete();
+
+        return $this;
+    }
+
+    public function isSubscribed($user)
+    {
+        return $this->subscriptions->contains(function ($subscription) use ($user) {
+            return $user->id === $subscription->user_id;
+        });
+    }
 }
