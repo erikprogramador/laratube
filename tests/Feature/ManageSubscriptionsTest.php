@@ -22,7 +22,7 @@ class ManageSubscriptionsTest extends TestCase
 
         $this->be($user);
 
-        $this->post(route('subscribe', $channel))
+        $this->postJson(route('subscribe', $channel))
             ->assertStatus(201);
 
         $user = $user->fresh();
@@ -38,8 +38,8 @@ class ManageSubscriptionsTest extends TestCase
         $channel = factory(Channel::class)->create();
         $user = factory(User::class)->create();
 
-        $this->post(route('subscribe', $channel))
-            ->assertStatus(302);
+        $this->postJson(route('subscribe', $channel))
+            ->assertStatus(401);
     }
 
     /** @test */
@@ -53,7 +53,7 @@ class ManageSubscriptionsTest extends TestCase
 
         $this->be($user);
 
-        $this->post(route('unsubscribe', $channel))
+        $this->postJson(route('unsubscribe', $channel))
             ->assertStatus(200);
 
         $user = $user->fresh();
@@ -71,7 +71,7 @@ class ManageSubscriptionsTest extends TestCase
 
         $channel->subscribe($user);
 
-        $this->post(route('subscribe', $channel))
-            ->assertStatus(302);
+        $this->postJson(route('subscribe', $channel))
+            ->assertStatus(401);
     }
 }

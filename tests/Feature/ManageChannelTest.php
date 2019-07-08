@@ -26,7 +26,7 @@ class ManageChannelTest extends TestCase
 
         $this->be($user);
 
-        $this->put(route('channels.update', $channel), [
+        $this->putJson(route('channels.update', $channel), [
             'name' => 'Updated Channel name',
             'description' => 'Updated Channel description',
         ])->assertStatus(200)
@@ -50,10 +50,10 @@ class ManageChannelTest extends TestCase
             'description' => 'Default Channel description',
         ]);
 
-        $this->put(route('channels.update', $channel), [
+        $this->putJson(route('channels.update', $channel), [
             'name' => 'Updated Channel name',
             'description' => 'Updated Channel description',
-        ])->assertStatus(302);
+        ])->assertStatus(401);
     }
 
     /** @test */
@@ -68,7 +68,7 @@ class ManageChannelTest extends TestCase
 
         $this->be($user);
 
-        $this->put(route('channels.update', $channel), [
+        $this->putJson(route('channels.update', $channel), [
             'name' => 'Updated Channel name',
             'description' => 'Updated Channel description',
         ])->assertStatus(403);
@@ -86,8 +86,7 @@ class ManageChannelTest extends TestCase
 
         $this->be($user);
 
-        $this->expectException(\Illuminate\Validation\ValidationException::class);
-        $this->put(route('channels.update', $channel), [
+        $this->putJson(route('channels.update', $channel), [
             'name' => '',
             'description' => 'Updated Channel description',
         ])->assertJsonValidationErrors(['name']);

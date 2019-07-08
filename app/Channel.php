@@ -21,6 +21,11 @@ class Channel extends Model
         });
     }
 
+    public function owner()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public function subscriptions()
     {
         return $this->hasMany(Subscription::class);

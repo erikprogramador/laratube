@@ -21,6 +21,17 @@ class ChannelTest extends TestCase
     }
 
     /** @test */
+    public function it_has_a_owner()
+    {
+        $owner = factory(User::class)->create();
+        $channel = factory(Channel::class)->create([
+            'owner_id' => $owner->id,
+        ]);
+
+        $this->assertTrue($channel->owner->is($owner));
+    }
+
+    /** @test */
     public function it_can_subscribe_a_user()
     {
         $user = factory(User::class)->create();
