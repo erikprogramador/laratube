@@ -12,6 +12,7 @@ class VideosUploadController extends Controller
 
         return response()->json([
             'video_path' => $file,
+            'thumb_path' => $file,
         ], 201);
     }
 }
