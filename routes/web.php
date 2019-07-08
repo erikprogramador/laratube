@@ -36,6 +36,7 @@ Route::delete('channel/{channel}', 'ChannelsController@destroy')->name('channels
  * Videos
  */
 Route::post('videos/{channel}', 'VideosController@store')->name('videos.store')->middleware(['auth']);
+Route::post('videos/{channel}/upload', 'VideosUploadController')->name('videos.upload')->middleware(['auth']);
 
 /**
  * Comments
