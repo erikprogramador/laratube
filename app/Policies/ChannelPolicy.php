@@ -14,4 +14,9 @@ class ChannelPolicy
     {
         return $user->id === $channel->owner_id;
     }
+
+    public function destroy(User $user, Channel $channel)
+    {
+        return $user->id === $channel->owner_id;
+    }
 }

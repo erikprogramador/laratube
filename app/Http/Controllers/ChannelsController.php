@@ -9,7 +9,7 @@ class ChannelsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $channel
      * @return \Illuminate\Http\Response
      */
     public function show(Channel $channel)
@@ -20,7 +20,7 @@ class ChannelsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
+     * @param  int  $channel
      * @return \Illuminate\Http\Response
      */
     public function update(Channel $channel)
@@ -42,11 +42,15 @@ class ChannelsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int  $channel
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Channel $channel)
     {
-        //
+        $this->authorize('destroy', $channel);
+
+        $channel->delete();
+
+        return response()->json([], 200);
     }
 }

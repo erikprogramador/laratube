@@ -102,4 +102,46 @@ class ManageChannelTest extends TestCase
             ->assertStatus(200)
             ->assertViewHas('channel', $channel);
     }
+
+    /** @test */
+    public function channel_can_be_deleted()
+    {
+        $user = factory(User::class)->create();
+        $channel = factory(Channel::class)->create([
+            'owner_id' => $user->id,
+        ]);
+
+        $this->be($user);
+
+        $this->delete(route('channels.destroy', $channel))
+            ->assertStatus(200);
+
+        $this->assertDatabaseMissing('channels', [
+            'id' => $channel->id,
+            'name' => $channel->name,
+        ]);
+    }
+
+    /** @test */
+    public function guests_can_not_delete_channels()
+    {
+        $channel = factory(Channel::class)->create();
+
+        $this->delete(route('channels.destroy', $channel))
+            ->assertStatus(302);
+    }
+
+    /** @test */
+    public function only_channel_owner_can_delete_a_channel()
+    {
+        $user = factory(User::class)->create();
+        $channel = factory(Channel::class)->create([
+            'owner_id' => factory(User::class)->create()->id,
+        ]);
+
+        $this->be($user);
+
+        $this->delete(route('channels.destroy', $channel))
+            ->assertStatus(403);
+    }
 }
