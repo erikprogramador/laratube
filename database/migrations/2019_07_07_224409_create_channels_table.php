@@ -17,6 +17,7 @@ class CreateChannelsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->unsignedBigInteger('owner_id');
+            $table->string('slug')->unique()->index();
             $table->timestamps();
 
             $table->foreign('owner_id')
