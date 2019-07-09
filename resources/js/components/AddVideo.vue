@@ -5,13 +5,13 @@
     </a>
 
     <modal name="create-video" width="90%" height="90%">
-      <create-video @close="$modal.hide('create-video')"></create-video>
+      <create-video @close="$modal.hide('create-video')" :channel="channel"></create-video>
     </modal>
   </div>
 </template>
 
 <script>
 export default {
-  //
+  props: ['channel']
 }
 </script>

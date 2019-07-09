@@ -17,7 +17,7 @@
 
     <nav class="flex items-center px-8">
         @auth
-            <add-video></add-video>
+            <add-video :channel="{{ auth()->user()->channel }}"></add-video>
 
             <a class="text-text ml-6 text-2xl" href="#"><i class="mdi mdi-bell"></i></a>
 
