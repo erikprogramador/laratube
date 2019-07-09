@@ -2064,24 +2064,28 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 5:
                 response = _context.sent;
                 this.close();
-                alert('Video criado com sucesso!');
-                _context.next = 14;
+                _context.next = 9;
+                return alert('Video criado com sucesso!');
+
+              case 9:
+                window.location.replace(response.data.path);
+                _context.next = 16;
                 break;
 
-              case 10:
-                _context.prev = 10;
+              case 12:
+                _context.prev = 12;
                 _context.t0 = _context["catch"](2);
                 errors = Object.keys(_context.t0.response.data.errors).map(function (error) {
                   return _context.t0.response.data.errors[error];
                 });
                 this.errors = this.flatten(errors);
 
-              case 14:
+              case 16:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[2, 10]]);
+        }, _callee, this, [[2, 12]]);
       }));
 
       function store() {
