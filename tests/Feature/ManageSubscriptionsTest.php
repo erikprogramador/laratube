@@ -53,7 +53,7 @@ class ManageSubscriptionsTest extends TestCase
 
         $this->be($user);
 
-        $this->postJson(route('unsubscribe', $channel))
+        $this->deleteJson(route('unsubscribe', $channel))
             ->assertStatus(200);
 
         $user = $user->fresh();
@@ -71,7 +71,7 @@ class ManageSubscriptionsTest extends TestCase
 
         $channel->subscribe($user);
 
-        $this->postJson(route('subscribe', $channel))
+        $this->deleteJson(route('unsubscribe', $channel))
             ->assertStatus(401);
     }
 }

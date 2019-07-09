@@ -22,6 +22,11 @@ class Video extends Model
         return 'slug';
     }
 
+    public function channel()
+    {
+        return $this->belongsTo(Channel::class);
+    }
+
     public function tags()
     {
         return $this->belongsToMany(Tag::class);

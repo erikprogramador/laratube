@@ -17,13 +17,13 @@ Route::get('feed/subscriptions', function () {
 
 Auth::routes();
 
-Route::view('watch/{video}', 'videos.show')->name('videos.watch');
+Route::get('watch/{video}', 'WatchVideoController@show')->name('videos.watch');
 
 /**
  * Subscriptions
  */
 Route::post('subscribe/{channel}', 'ChannelSubscriptionsController@store')->name('subscribe')->middleware(['auth']);
-Route::post('unsubscribe/{channel}', 'ChannelSubscriptionsController@destroy')->name('unsubscribe')->middleware(['auth']);
+Route::delete('unsubscribe/{channel}', 'ChannelSubscriptionsController@destroy')->name('unsubscribe')->middleware(['auth']);
 
 /**
  * Channels

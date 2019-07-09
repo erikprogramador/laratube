@@ -1,5 +1,5 @@
 <div class="py-8 px-4">
-    <h3>6 comentários</h3>
+    <h3>{{ $video->comments->count() }} comentários</h3>
 
     <form action="" class="flex mt-2 mb-6">
         <img src="https://unsplash.it/50/50" alt="Logo canal" class="w-12 h-12 rounded-full mr-4">
@@ -15,19 +15,21 @@
     </form>
 
     <ul class="list-reset w-full">
-        <li class="flex py-4">
-            <img src="https://unsplash.it/50/50" alt="Logo canal" class="w-12 h-12 rounded-full mr-4">
+        @foreach($video->comments as $comment)
+            <li class="flex py-4">
+                <img src="https://unsplash.it/50/50" alt="Logo canal" class="w-12 h-12 rounded-full mr-4">
 
-            <div>
-                <div class="flex items-center mb-2">
-                    <h6 class="text-text font-semibold mr-2">Camila Martins</h6>
-                    <small class="text-icon">2 horas atrás</small>
-                </div>
+                <div>
+                    <div class="flex items-center mb-2">
+                        <h6 class="text-text font-semibold mr-2">{{ $comment->owner->name }}</h6>
+                        <small class="text-icon">{{ $comment->created_at->diffForHumans() }}</small>
+                    </div>
 
-                <div class="text-sm text-text leading-relaxed">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, ut culpa illo a esse ea magnam reprehenderit quidem minus accusantium facere nihil sapiente dolor qui. Omnis pariatur obcaecati ipsum nulla.</p>
+                    <div class="text-sm text-text leading-relaxed">
+                        {!! nl2br($comment->body) !!}
+                    </div>
                 </div>
-            </div>
-        </li>
+            </li>
+        @endforeach
     </ul>
 </div>

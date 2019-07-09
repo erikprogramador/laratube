@@ -11,4 +11,9 @@ class Comment extends Model
     protected $casts = [
         'owner_id' => 'int',
     ];
+
+    public function owner()
+    {
+        return $this->belongsTo(User::class, 'owner_id');
+    }
 }
