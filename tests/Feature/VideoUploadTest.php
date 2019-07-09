@@ -46,27 +46,27 @@ class VideoUploadTest extends TestCase
         Storage::disk('local')->assertMissing("videos/{$channel->id}/videos/{$file->hashName()}");
     }
 
-    /** @test */
-    public function when_upload_video_may_create_a_thumbnail()
-    {
-        $this->withoutExceptionHandling();
-        $channel = factory(Channel::class)->create();
+    // /** @test */
+    // public function when_upload_video_may_create_a_thumbnail()
+    // {
+    //     $this->withoutExceptionHandling();
+    //     $channel = factory(Channel::class)->create();
 
-        Storage::fake('local');
+    //     Storage::fake('local');
 
-        $this->be($channel->owner);
+    //     $this->be($channel->owner);
 
-        $file = UploadedFile::fake()->create('video.mp4');
+    //     $file = UploadedFile::fake()->create('video.mp4');
 
-        $thumbHash = str_replace('.mp4', '.png', $file->hashName());
+    //     $thumbHash = str_replace('.mp4', '.png', $file->hashName());
 
-        $response = $this->postJson(route('videos.upload', $channel), [
-            'video' => $file,
-        ])->assertStatus(201)
-            ->assertJsonFragment([
-                'thumb_path' => "videos/{$channel->id}/thumbnail/{$thumbHash}"
-            ]);
+    //     $response = $this->postJson(route('videos.upload', $channel), [
+    //         'video' => $file,
+    //     ])->assertStatus(201)
+    //         ->assertJsonFragment([
+    //             'thumb_path' => "videos/{$channel->id}/thumbnail/{$thumbHash}"
+    //         ]);
 
-        Storage::disk('local')->assertExists("videos/{$channel->id}/thumbnail/{$thumbHash}");
-    }
+    //     Storage::disk('local')->assertExists("videos/{$channel->id}/thumbnail/{$thumbHash}");
+    // }
 }
