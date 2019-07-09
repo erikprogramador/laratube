@@ -8,6 +8,20 @@ class Video extends Model
 {
     protected $guarded = [];
 
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            $model->slug = str_random(16);
+        });
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     public function tags()
     {
         return $this->belongsToMany(Tag::class);

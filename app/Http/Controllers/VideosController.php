@@ -27,6 +27,8 @@ class VideosController extends Controller
             ]);
         });
 
-        return response()->json([], 200);
+        return response()->json([
+            'path' => route('videos.watch', $video),
+        ], 200);
     }
 }
