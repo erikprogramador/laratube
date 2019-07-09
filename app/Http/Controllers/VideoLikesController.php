@@ -15,6 +15,11 @@ class VideoLikesController extends Controller
             return response()->json([], 200);
         }
 
+        $dislike = $video->dislikes()->where('user_id', auth()->id())->first();
+        if ($dislike) {
+            $dislike->delete();
+        }
+
         Like::create([
             'liked_id' => $video->id,
             'liked_type' => Video::class,

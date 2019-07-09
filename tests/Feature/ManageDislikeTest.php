@@ -58,4 +58,30 @@ class ManageDislikeTest extends TestCase
             'user_id' => $user->id,
         ]);
     }
+
+    /** @test */
+    public function when_have_a_like_only_the_dislike_may_persist()
+    {
+        $this->withoutExceptionHandling();
+
+        $user = factory(User::class)->create();
+        $video = factory(Video::class)->create();
+
+        $this->be($user);
+
+        $this->postJson(route('video.likes.store', $video));
+        $this->postJson(route('video.dislikes.store', $video));
+
+        $this->assertDatabaseMissing('likes', [
+            'liked_id' => $video->id,
+            'liked_type' => Video::class,
+            'user_id' => $user->id,
+        ]);
+
+        $this->assertDatabaseHas('dislikes', [
+            'disliked_id' => $video->id,
+            'disliked_type' => Video::class,
+            'user_id' => $user->id,
+        ]);
+    }
 }
