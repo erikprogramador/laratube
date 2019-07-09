@@ -41,6 +41,9 @@ Route::post('videos/{channel}/upload', 'VideosUploadController')->name('videos.u
 /**
  * Comments
  */
+Route::post('video/{video}/comments', 'VideoCommentsController@store')->name('video.comments.store')->middleware(['auth']);
+Route::put('video/{video}/comments/{comment}', 'VideoCommentsController@update')->name('video.comments.update')->middleware(['auth']);
+Route::delete('video/{video}/comments/{comment}', 'VideoCommentsController@destroy')->name('video.comments.destroy')->middleware(['auth']);
 
 /**
  * Likes
