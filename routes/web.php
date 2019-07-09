@@ -48,6 +48,8 @@ Route::delete('video/{video}/comments/{comment}', 'VideoCommentsController@destr
 /**
  * Likes
  */
+Route::post('video/{video}/like', 'VideoLikesController@store')->name('video.likes.store')->middleware(['auth']);
+Route::post('video/{video}/dislike', 'VideoDislikesController@store')->name('video.dislikes.store')->middleware(['auth']);
 
 /**
  * Notifications
