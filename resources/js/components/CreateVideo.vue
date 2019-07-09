@@ -156,8 +156,8 @@ export default {
 
       try {
         const response = await axios.post(`/videos/${this.channel.slug}`, form)
+        this.close()
         alert('Video criado com sucesso!')
-        this.reset()
       } catch (e) {
         const errors = Object.keys(e.response.data.errors).map((error) => e.response.data.errors[error])
         this.errors = this.flatten(errors)

@@ -2,7 +2,7 @@
   <div class="flex-1">
     <label for="file" class="flex flex-col items-center justify-center cursor-pointer">
       <i class="mdi mdi-youtube text-6xl text-main"></i>
-      <h3 class="text-text">Faça o upload do video aqui!</h3>
+      <h3 class="text-text" v-text="message"></h3>
     </label>
 
     <input type="file" name="file" id="file" class="hidden" @change="upload" />
@@ -13,8 +13,15 @@
 export default {
   props: ['url'],
 
+  data() {
+    return {
+      message: 'Faça o upload do video aqui!'
+    }
+  },
+
   methods: {
     async upload(evt) {
+      this.message = 'Enviando...'
       try {
         let form = new FormData()
         form.append('video', evt.target.files[0]);
@@ -25,6 +32,7 @@ export default {
           onUploadProgress: progressEvent => this.$emit('progress', Math.round((progressEvent.loaded * 100) / progressEvent.total))
         })
         this.$emit('complete', response.data.video_path)
+        this.message = 'Seu video foi enviado com sucesso!'
       } catch (e) {
         console.log(e)
       }
